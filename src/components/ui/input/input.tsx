@@ -12,13 +12,14 @@ export const Input: React.FC<InputProps> = ({
   extraClass = "",
   type = "text",
   maxLength,
+  min,
   max,
   isLimitText = false,
   ...rest
 }) => {
   const limitText =
     type === "text"
-      ? `Максимум — ${maxLength} символа`
+      ? `Максимум — ${maxLength} ${(maxLength !==undefined && maxLength > 4) ? 'символов' : 'символа'}`
       : `Максимальное число — ${max}`;
 
   return (
@@ -28,6 +29,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         type={type}
         maxLength={maxLength}
+        min={min}
         max={max}
         {...rest}
       />
