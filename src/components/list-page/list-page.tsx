@@ -26,7 +26,7 @@ type TClickButton = {
 };
 
 interface IChangingElement {
-  element: any | null;
+  element: IResultObj | null;
   changeAt: number;
   toAdd: boolean;
   toDelete: boolean;
@@ -163,7 +163,7 @@ export const ListPage: React.FC = () => {
   ) {
     setValues({ index: null, text: null });
     setEventState({ ...eventState, [buttonName]: true });
-    let arr: Array<any> = [...resultArray.array];
+    let arr: Array<IResultObj> = [...resultArray.array];
     let positionIndex: number = 0;
     if (position === "head") {
       positionIndex = 0;

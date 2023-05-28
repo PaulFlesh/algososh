@@ -13,8 +13,7 @@ import { IResultObj } from "../../types/result";
 export const SortingPage: React.FC = () => {
   const [sortType, setSortType] = React.useState<"selection" | "bubble">("selection");
   const [direction, setDirection] = React.useState<"asc" | "desc" | boolean>(false);
-  const [resultArray, setResultArray] = React.useState<IResultObj[]>([]);
-
+  
   const randomArr = (minLen: number, maxLen: number): Array<IResultObj> => {
     const len = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;
     return Array.from({ length: len }, () => {
@@ -25,6 +24,8 @@ export const SortingPage: React.FC = () => {
       };
     });
   };
+
+  const [resultArray, setResultArray] = React.useState<IResultObj[]>(randomArr(3, 17));
 
   const modifyArray = (array: Array<IResultObj>, start: number, end: number) => {
     if (sortType === "bubble") {
@@ -197,7 +198,7 @@ export const SortingPage: React.FC = () => {
             setResultArray(randomArr(3, 17));
             setDirection(true);
           }}
-          disabled={direction === ("asc" || "desc")}
+          disabled={direction === "asc" || direction === "desc"}
           extraClass="ml-40"
         />
       </div>

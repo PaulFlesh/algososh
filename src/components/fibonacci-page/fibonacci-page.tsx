@@ -30,14 +30,14 @@ export const FibonacciPage: React.FC = () => {
       await timeout(SHORT_DELAY_IN_MS);
       setResultArray({ items: resultArr });
     }
+    setLoader(false);
   };
 
   const onClick = () => {
-    setValues({ number: null });
     setLoader(true);
+    setValues({ number: null });
     setResultArray({ items: [] });
     renderItems(Number(values.number));
-    setLoader(false);
   };
 
   return (
@@ -58,7 +58,10 @@ export const FibonacciPage: React.FC = () => {
             text={'Рассчитать'}
             onClick={onClick}
             isLoader={loader}
-            disabled={!values.number}
+            disabled={!values.number
+              || !Number(values.number)
+              || values.number > 19 
+              || values.number < 1}
           />
         </div>
         {resultArray && (

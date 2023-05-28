@@ -13,9 +13,9 @@ import { Queue } from "./queue-class";
 
 const queue = new Queue<IResultObj>(7);
 
-const getEmptyQueue = (length: number): Array<any> => {
+const getEmptyQueue = (length: number): Array<IResultObj> => {
   return Array.from({ length }, () => {
-    const emptyObject: any = {
+    const emptyObject: IResultObj = {
       value: "",
       modified: false,
       changing: false
@@ -32,7 +32,7 @@ export const QueuePage: React.FC = () => {
   async function enqueue() {
     setLoader(true);
     let enqueuedItem: IResultObj | null = null;
-    let arrayOfItems: Array<any> = [...resultArray.array];
+    let arrayOfItems: Array<IResultObj> = [...resultArray.array];
     if (values.text) {
       enqueuedItem = {
         value: values.text,
@@ -58,8 +58,8 @@ export const QueuePage: React.FC = () => {
 
   async function dequeue() {
     setLoader(true);
-    let headElementInQueue: any | null = queue.peak();
-    let arr: Array<any> = [...resultArray.array];
+    let headElementInQueue: IResultObj | null = queue.peak();
+    let arr: Array<IResultObj> = [...resultArray.array];
     if (headElementInQueue) {
       headElementInQueue.changing = true;
       await timeout(SHORT_DELAY_IN_MS);

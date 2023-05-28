@@ -1,5 +1,4 @@
-import { nanoid } from "nanoid";
-//import { IItemObject } from "../../types/types";
+import { IResultObj } from "../../types/result";
 
 export const MAX_LENGTH: number = 4;
 
@@ -26,7 +25,7 @@ interface ILinkedList<T> {
   print: () => void;
 }
 
-export class LinkedList<T extends any> implements ILinkedList<T> {
+export class LinkedList<T extends IResultObj> implements ILinkedList<T> {
   private head: Node<T> | null;
   private size: number;
   private initialList: Array<any> | undefined;
@@ -44,7 +43,6 @@ export class LinkedList<T extends any> implements ILinkedList<T> {
       for (let i = 0; i < this.initialList.length; i++) {
         let value = {
           value: this.initialList[i],
-          id: nanoid(),
           changing: false,
           modified: false,
         };
