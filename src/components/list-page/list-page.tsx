@@ -216,6 +216,7 @@ export const ListPage: React.FC = () => {
     setResultArray({ array: [...arr] });
     setEventState({ ...eventState, [buttonName]: false });
   }
+
   return (
     <SolutionLayout title="Связный список">
       <div className={styles.container}>

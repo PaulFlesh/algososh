@@ -28,7 +28,7 @@ interface ILinkedList<T> {
 export class LinkedList<T extends IResultObj> implements ILinkedList<T> {
   private head: Node<T> | null;
   private size: number;
-  private initialList: Array<any> | undefined;
+  private initialList: Array<IResultObj> | undefined;
   constructor(initialList?: Array<any>) {
     this.initialList = initialList;
     this.head = null;
