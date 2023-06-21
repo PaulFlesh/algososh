@@ -29,19 +29,24 @@ export const StackPage: React.FC = () => {
       };
     }
     if (pushedItem) {
-      await timeout(SHORT_DELAY_IN_MS);
       stack.push(pushedItem);
       setValues({ text: '' });
       setResultArray({ array: stack.getStack() });
+      await timeout(SHORT_DELAY_IN_MS);
+      pushedItem.changing = false;
     }
     setLoader(false);
   };
 
   async function pop() {
     setLoader(true);
-    await timeout(SHORT_DELAY_IN_MS);
-    stack.pop();
-    setResultArray({ array: stack.getStack() });
+    let last = stack.peak();
+    if (last) {
+      last.changing = true;
+      await timeout(SHORT_DELAY_IN_MS);
+      stack.pop();
+      setResultArray({ array: stack.getStack() });
+    }
     setLoader(false);
   };
 
@@ -55,17 +60,20 @@ export const StackPage: React.FC = () => {
             maxLength={4}
             value={values.text ? values.text : ""}
             onChange={(e) => handleChange(e)}
+            data-testid="input"
           />
           <Button
             text='Добавить'
             onClick={push}
             isLoader={loader}
-            disabled={isEmpty(values.text)} />
+            disabled={isEmpty(values.text)}
+            data-testid="push" />
           <Button
             text='Удалить'
             onClick={pop}
             isLoader={loader}
-            disabled={!resultArray.array.length} />
+            disabled={!resultArray.array.length}
+            data-testid="pop" />
           <Button
             text='Очистить'
             extraClass="ml-40"
@@ -74,10 +82,12 @@ export const StackPage: React.FC = () => {
               setResultArray({ array: stack.getStack() });
             }}
             isLoader={loader}
-            disabled={!resultArray.array.length} />
+            disabled={!resultArray.array.length}
+            data-testid="clear"
+          />
         </div>
         {resultArray && (
-          <div className={styles.result}>
+          <div className={styles.result} data-testid='result'>
             {resultArray.array.length
               ? resultArray.array.map((item, index) => {
                 const lastIndex = resultArray.array.length - 1;

@@ -16,6 +16,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 48px 48px;
+  gap: 48px 16px;
   max-width: 1040px;
 }
