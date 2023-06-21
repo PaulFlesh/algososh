@@ -1,9 +1,8 @@
+import { defaultColor } from '../../src/constants/constants';
+
 describe('Fibonacci test', () => {
-
-  const defaultColor = '4px solid rgb(0, 50, 255)';
-
   beforeEach(function () {
-    cy.visit('http://localhost:3000/fibonacci');
+    cy.visit('/fibonacci');
     cy.get('[data-testid="input"]').as('input');
     cy.get('[data-testid="button"]').as('button');
     cy.get('[data-testid="result"]').as('result');

@@ -1,11 +1,8 @@
+import { defaultColor, changingColor, modifiedColor } from '../../src/constants/constants';
+
 describe('Recursion test', () => {
-
-  const defaultColor = '4px solid rgb(0, 50, 255)';
-  const changingColor = '4px solid rgb(210, 82, 225)';
-  const modifiedColor = '4px solid rgb(127, 224, 81)';
-
   beforeEach(function () {
-    cy.visit('http://localhost:3000/recursion');
+    cy.visit('/recursion');
     cy.get('[data-testid="input"]').as('input');
     cy.get('[data-testid="button"]').as('button');
     cy.get('[data-testid="result"]').as('result');

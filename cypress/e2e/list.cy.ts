@@ -1,10 +1,8 @@
+import { defaultColor, changingColor } from '../../src/constants/constants';
+
 describe('List test', () => {
-
-  const defaultColor = '4px solid rgb(0, 50, 255)';
-  const changingColor = '4px solid rgb(210, 82, 225)';
-
   beforeEach(function () {
-    cy.visit('http://localhost:3000/list');
+    cy.visit('/list');
     cy.get('[data-testid="valueInput"]').as('valueInput');
     cy.get('[data-testid="indexInput"]').as('indexInput');
     cy.get('[data-testid="addToHead"]').as('addToHead');

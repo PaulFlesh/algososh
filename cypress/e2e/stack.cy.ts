@@ -1,10 +1,8 @@
+import { defaultColor, changingColor } from '../../src/constants/constants';
+
 describe('Stack test', () => {
-
-  const defaultColor = '4px solid rgb(0, 50, 255)';
-  const changingColor = '4px solid rgb(210, 82, 225)';
-
   beforeEach(function () {
-    cy.visit('http://localhost:3000/stack');
+    cy.visit('/stack');
     cy.get('[data-testid="input"]').as('input');
     cy.get('[data-testid="push"]').as('push');
     cy.get('[data-testid="pop"]').as('pop');

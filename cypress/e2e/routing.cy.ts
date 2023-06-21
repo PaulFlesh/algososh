@@ -1,6 +1,6 @@
 describe('app works correctly with routes', function() {
   beforeEach(function() {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
   });
 
   it('should open main page by default', function() {
@@ -20,5 +20,4 @@ describe('app works correctly with routes', function() {
   checkRoute("stack");
   checkRoute("queue");
   checkRoute("list");
-
 });
