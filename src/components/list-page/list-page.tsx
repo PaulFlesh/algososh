@@ -230,6 +230,7 @@ export const ListPage: React.FC = () => {
             isLimitText={true}
             maxLength={4}
             value={values.text ? values.text : ""}
+            data-testid="valueInput"
           />
           <Button
             text="Добавить в head"
@@ -239,6 +240,7 @@ export const ListPage: React.FC = () => {
             disabled={!values.text}
             isLoader={eventState.addToHead}
             linkedList="small"
+            data-testid="addToHead"
           />
           <Button
             text="Добавить в tail"
@@ -248,6 +250,7 @@ export const ListPage: React.FC = () => {
             disabled={!values.text}
             isLoader={eventState.addToTail}
             linkedList="small"
+            data-testid="addToTail"
           />
           <Button
             text="Удалить из head"
@@ -257,6 +260,7 @@ export const ListPage: React.FC = () => {
             disabled={!resultArray.array.length}
             isLoader={eventState.deleteFromHead}
             linkedList="small"
+            data-testid="deleteFromHead"
           />
           <Button
             text="Удалить из tail"
@@ -266,6 +270,7 @@ export const ListPage: React.FC = () => {
             disabled={!resultArray.array.length}
             isLoader={eventState.deleteFromTail}
             linkedList="small"
+            data-testid="deleteFromTail"
           />
         </div>
         <div className={styles.controls}>
@@ -284,6 +289,7 @@ export const ListPage: React.FC = () => {
                 setValues({ ...values, index: 0 });
               }
             }}
+            data-testid="indexInput"
           />
           <Button
             text="Добавить по индексу"
@@ -294,6 +300,7 @@ export const ListPage: React.FC = () => {
             isLoader={eventState.addByIndex}
             linkedList="big"
             extraClass={styles.wide_button}
+            data-testid="addByIndex"
           />
           <Button
             text="Удалить по индексу"
@@ -304,9 +311,10 @@ export const ListPage: React.FC = () => {
             isLoader={eventState.deleteByIndex}
             linkedList="big"
             extraClass={styles.wide_button}
+            data-testid="deleteByIndex"
           />
         </div>
-        <div className={styles.result}>
+        <div className={styles.result} data-testid='result'>
           {resultArray.array.length
             ? resultArray.array.map((item, index) => {
               const lastIndex = resultArray.array.length - 1;

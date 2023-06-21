@@ -82,6 +82,7 @@ export const QueuePage: React.FC = () => {
             isLimitText={true}
             maxLength={4}
             value={values.text ? values.text : ""}
+            data-testid="input"
           />
           <Button
             text='Добавить'
@@ -89,12 +90,14 @@ export const QueuePage: React.FC = () => {
             disabled={!values.text || queue.isFilled()
             }
             isLoader={loader}
+            data-testid="enqueue"
           />
           <Button
             text='Удалить'
             onClick={dequeue}
             disabled={queue.isEmpty()}
             isLoader={loader}
+            data-testid="dequeue"
           />
           <Button
             text='Очистить'
@@ -108,10 +111,11 @@ export const QueuePage: React.FC = () => {
               !(queue.getHeadIndex() === queue.getSize() - 1)
             }
             isLoader={loader}
+            data-testid="clear"
           />
         </div>
         {resultArray && (
-          <div className={styles.result}>
+          <div className={styles.result} data-testid='result'>
             {resultArray.array.length
               ? resultArray.array.map((item, index) => {
                 const headIndex = queue.getHeadIndex();

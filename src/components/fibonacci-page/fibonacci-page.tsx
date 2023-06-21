@@ -53,11 +53,13 @@ export const FibonacciPage: React.FC = () => {
             type='number'
             value={values.number || ""}
             onChange={(e) => handleChange(e)}
+            data-testid='input'
           />
           <Button
             text={'Рассчитать'}
             onClick={onClick}
             isLoader={loader}
+            data-testid='button'
             disabled={!values.number
               || !Number(values.number)
               || values.number > 19 
@@ -65,7 +67,7 @@ export const FibonacciPage: React.FC = () => {
           />
         </div>
         {resultArray && (
-          <div className={styles.result}>
+          <div className={styles.result} data-testid='result'>
             {resultArray.items.map((item, index) => {
               return (
                 <Circle

@@ -98,22 +98,25 @@ export const StringComponent: React.FC = () => {
             maxLength={11}
             value={values.text || ""}
             onChange={(e) => handleChange(e)}
+            data-testid='input'
           />
           <Button
             text={'Развернуть'}
             onClick={onClick}
             isLoader={loader}
             disabled={!values.text}
+            data-testid='button'
           />
         </div>
         {resultArray && (
-          <div className={styles.result}>
+          <div className={styles.result} data-testid='result'>
             {resultArray.items.map(item => {
               return (
                 <Circle
                   state={setCircleState(item)}
                   key={nanoid()}
                   letter={item.value}
+                  data-testid='circle'
                 />
               );
             })}
